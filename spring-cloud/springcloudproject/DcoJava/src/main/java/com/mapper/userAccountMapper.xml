@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.mapper.UserAccountMapper">
+
+    <select id="findAge" parameterType="String" resultType="String">
+        select cttime from userAccount WHERE userId=#{id} 
+    </select>
+    
+    <insert id="insertUser" parameterType="UserAccount" useGeneratedKeys="true" keyProperty="userId" >
+    	insert into userAccount(userId,account,password,email,phone,status,cttime,mdtime)
+    	values(#{userId},#{account},#{password},#{email},#{phone},#{status},#{ctTime},#{mdTime})
+    </insert>
+    
+    <update id="updateUser" parameterType="UserAccount">
+    	update userAccount set account=#{account},password=#{password},
+    	email=#{email},phone=#{phone},status=#{status},cttime=#{ctTime},
+    	mdtime=#{mdTime} where userid=#{userId}
+    </update>
+</mapper>

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN" 
+"http://www.mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+
+    <typeAliases>
+        <typeAlias alias="UserAccount" type="com.model.UserAccount"/>
+        <typeAlias alias="ThirdAccount" type="com.model.ThirdAccount"/>
+        <typeAlias alias="ThirdState" type="com.model.ThirdState"/>
+        <typeAlias alias="ThirdBasicInfo" type="com.model.ThirdBasicInfo"/>
+        <typeAlias alias="ThirdHotPubInfo" type="com.model.ThirdHotPubInfo"/>
+    </typeAliases>
+    <mappers>
+        <mapper resource="com/mapper/userAccountMapper.xml" />
+        <mapper resource="com/mapper/thirdAccountMapper.xml"/>
+        <mapper resource="com/mapper/thirdStateMapper.xml"/>
+        <mapper resource="com/mapper/thirdBasicInfoMapper.xml"/>
+        <mapper resource="com/mapper/thirdHotPubInfoMapper.xml"/>
+    </mappers>
+
+    
+</configuration>
