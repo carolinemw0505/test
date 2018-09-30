@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.mapper.ThirdBasicInfoMapper">
+	
+	<select id="getThirdCountByUserId" resultType="java.util.HashMap" parameterType="int">
+		select a.tid,a.name,a.homePage,a.pubCount,a.fanCount,a.watchCount,a.starCount,
+		a.readCount,a.commentCount,a.replyCount,a.sharedCount,a.regTime,b.thirdUserId,
+		c.thirdAccount from userBindInfo b,thirdAccount c,thirdBasciInfo a where b.thirdUserId
+		=c.thirdUserId and c.tid=a.tid and b.userId=#{userId}
+	</select>
+	
+	<select id="getThirdCountByThirdAccountId" resultType="java.util.HashMap" parameterType="String">
+		select a.tid,a.name,a.homePage,a.pubCount,a.fanCount,a.watchCount,a.starCount,
+		a.readCount,a.commentCount,a.replyCount,a.sharedCount,a.regTime,c.thirdAccount 
+		from thirdAccount c,thirdBasciInfo a where c.tid=a.tid and c.thirdAccount=#{thirdAccountId}
+	</select>
+	
+	<select id="queryByTid" parameterType="int" resultType="ThirdBasicInfo">
+		select * from thirdBasciInfo where tid=#{tid} 
+	</select>
+	
+	<insert id="insertAndUpdate" parameterType="ThirdBasicInfo" useGeneratedKeys="true" keyProperty="bsid"> 
+		insert into thirdBasciInfo(bsid,tid,name,homePage,pubCount,fanCount,watchCount,starCount,
+		readCount,commentCount,replyCount,sharedCount,regTime) values (#{bsid},#{tid},
+		#{name},#{homePage},#{pubCount},#{fanCount},#{watchCount},#{starCount},
+		#{readCount},#{commentCount},#{replyCount},#{sharedCount},#{regTime}) on DUPLICATE key update 
+		tid=#{tid},name=#{name},homePage=#{homePage},pubCount=#{pubCount},
+		fanCount=#{fanCount},watchCount=#{watchCount},starCount=#{starCount},
+		readCount=#{readCount},commentCount=#{commentCount},replyCount=#{replyCount},
+		sharedCount=#{sharedCount},regTime=#{regTime}
+	</insert>	
+	
+</mapper>

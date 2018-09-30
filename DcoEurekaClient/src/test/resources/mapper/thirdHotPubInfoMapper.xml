@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.mapper.ThirdHotPubInfoMapper">
+	<delete id="deleteByTid" parameterType="int">
+		delete from thirdHotPubInfo where tid=#{tid}
+	</delete>
+
+	<insert id="insertBatcchThirdHotPubInfo" >
+		insert into thirdHotPubInfo(tid,title,content,linkAddr,commentCount,
+		watchCount,starCount,forkCount,sharedCount,pubTime) values 
+		<foreach collection="list" item="t"  separator=",">
+			(#{t.tid},#{t.title},#{t.content},#{t.linkAddr},#{t.commentCount},
+			#{t.watchCount},#{t.starCount},#{t.forkCount},#{t.sharedCount},#{t.pubTime})
+		</foreach>
+	</insert>
+	
+	<select id="queryHotPubByTid" parameterType="int" resultType="java.util.HashMap">
+		select * from thirdHotPubInfo where tid=#{tid}
+	</select>
+    
+</mapper>

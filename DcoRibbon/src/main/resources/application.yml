@@ -1,0 +1,9 @@
+eureka:
+ client:
+  serviceUrl:
+   defaultZone: http://localhost:8763/eureka
+spring:
+ application:
+  name: dco-ribbon-client
+server:
+ port: 8764

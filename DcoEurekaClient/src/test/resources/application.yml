@@ -1,0 +1,27 @@
+eureka:
+ client:
+  serviceUrl:
+   defaultZone: http://localhost:8761/eureka
+server:
+ port:8762
+spring:
+ application:
+  name: dco-server-client
+ cloud:
+  config:
+   label: master
+   profile: pro
+   discovery:
+    enabled: true
+    serviceId: dco-config-server
+management:
+ security:
+  enabled: false
+jdbc:
+ driverClassName: com.mysql.jdbc.driver
+ url: jdbc:mysql://172.18.255.36:3306/dco?zeroDateTimeBehavior=convertToNull&amp;useUnicode=true&amp;characterEncoding=utf-8
+ username: dco
+ password: 123456
+mybatis:
+ typeAliasePackage: com.dco.eureka.client.model
+ mapperLocations: classpath:mapper/*.xml

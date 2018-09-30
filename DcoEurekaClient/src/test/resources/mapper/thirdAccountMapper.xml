@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.mapper.ThirdAccountMapper">
+
+    <select id="findCount"  resultType="int">
+        select count(*) from thirdAccount  
+    </select>
+	
+	<insert id="insert" parameterType="ThirdAccount" useGeneratedKeys="true" keyProperty="tid">
+		insert into thirdAccount(thirdUserId,thirdAccount,thirdType,thirdToken,ctTime) 
+		values(#{thirdUserId},#{thirdAccount},#{thirdType},#{thirdToken},#{ctTime})
+	</insert>    
+    
+    <select id="query" resultType="ThirdAccount">
+    	select tid,thirdUserId,thirdAccount,thirdType,thirdToken,ctTime from thirdAccount where tid=#{tId}
+    </select>
+    
+    <select id="queryCountByThirdUserId" parameterType="String" resultType="int">
+    	select tid from thirdAccount where thirdUserId=#{thirdUserId}
+    </select>
+    
+    <update id="updateThirdAccountByUserId" parameterType="ThirdAccount" >
+    	update thirdAccount set thirdUserId=#{thirdUserId},thirdAccount=#{thirdAccount},thirdType=#{thirdType},
+    	thirdToken=#{thirdToken},ctTime=#{ctTime} where tid=#{tid} 
+    </update>
+    
+    
+    <select id="queryByThirdUserId" parameterType="String" resultType="ThirdAccount">
+    	select * from thirdAccount where thirdUserId=#{thirdUserId}
+    </select>
+    
+    <insert id="insertAndUpdate" parameterType="ThirdAccount" useGeneratedKeys="true" keyProperty="tid">
+    	insert into thirdAccount(tid,thirdUserId,thirdAccount,thirdType,thirdToken,ctTime)
+    	values(#{tid},#{thirdUserId},#{thirdAccount},#{thirdType},#{thirdToken},#{ctTime})  on DUPLICATE key update 
+    	thirdUserId=#{thirdUserId},thirdAccount=#{thirdAccount},thirdType=#{thirdType},thirdToken=#{thirdToken},
+    	ctTime=#{ctTime}
+    </insert>
+</mapper>

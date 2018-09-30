@@ -1,0 +1,19 @@
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8761/eureka/
+server:
+  port: 8888
+
+spring:
+  cloud:
+    config:
+      server:
+        git:
+          uri: https://github.com/CarolineMagic/DcoJava
+          searchPaths: spring-cloud/DcoJavaConfig
+  application:
+    name: dco-config-server
+management:
+ security:
+  enabled: false
