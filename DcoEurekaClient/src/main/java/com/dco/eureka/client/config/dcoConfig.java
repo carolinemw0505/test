@@ -19,9 +19,9 @@ import com.alibaba.druid.pool.DruidDataSourceFactory;
 
 @Configuration
 @ComponentScan(basePackages="com.dco.eureka.client.dao")
-public class dcoConfig {
+public class DcoConfig {
 
-	private static final Logger log=LoggerFactory.getLogger(dcoConfig.class);
+	private static final Logger log=LoggerFactory.getLogger(DcoConfig.class);
 	
 	@Autowired
 	Environment env;

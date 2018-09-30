@@ -1,0 +1,15 @@
+eureka:
+ client:
+  serviceUrl:
+   defaultZone: http://localhost:8763/eureka
+spring:
+ application:
+  name: dco-ribbon-hystrixturbine
+server:
+ port: 8765
+turbine:
+ appConfig:
+    dco-ribbon-client
+ aggregator:
+    clusterConfig: default
+ clusterNameExpression: new String("default")

@@ -47,7 +47,7 @@ public class PlatformLinkin extends PlatformPropertyAbstract{
 	}
 	
 	@Override
-	public JSONObject getUserInfo(String type,String code) throws Exception{
+	public String getUserInfo(String type,String code) throws Exception{
            JSONObject resultJson=null;
 
     	   String urlToken=Const.LINKEDINACCESSTOKENURL;
@@ -153,8 +153,10 @@ public class PlatformLinkin extends PlatformPropertyAbstract{
 			if(size>0){
 				thirdHotPubInfoService.insertBatchThirdHotPubInfo(pl);
 			}
-					
-			return resultJson;
+
+	    	String	result=resultJson.getString("id");
+			//return resultJson;
+	    	return result;
 		}
 
 }

@@ -49,7 +49,7 @@ public class PlatformGithub extends PlatformPropertyAbstract{
 	}
 
 	@Override
-	public JSONObject getUserInfo(String type,String code) throws Exception{
+	public String getUserInfo(String type,String code) throws Exception{
         JSONObject resultJson=null;
         String resultInfo="";
 		//github获取token地址
@@ -164,7 +164,9 @@ public class PlatformGithub extends PlatformPropertyAbstract{
 			if(size>0){
 				thirdHotPubInfoService.insertBatchThirdHotPubInfo(list);
 			}
-		return resultJson;
+	    	String	result=resultJson.getString("id");
+		    //return resultJson;
+	    	return result;
 	}
 
 }

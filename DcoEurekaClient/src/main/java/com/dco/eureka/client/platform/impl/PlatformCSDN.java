@@ -47,7 +47,7 @@ public class PlatformCSDN extends PlatformPropertyAbstract{
 	}
 
 	@Override
-	public JSONObject getUserInfo(String type,String code) throws Exception{
+	public String getUserInfo(String type,String code) throws Exception{
 		String resultInfo="";
 		JSONObject resultJson=null;
 		//slack获取用户token地址url
@@ -169,7 +169,9 @@ public class PlatformCSDN extends PlatformPropertyAbstract{
 				if(size>0){
 					thirdHotPubInfoService.insertBatchThirdHotPubInfo(hl);
 				}
-						
-			return resultJson;
+				
+		    String	result=resultJson.getString("username");
+			//return resultJson;
+		    return result;
 	}
 }
